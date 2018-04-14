@@ -7,44 +7,61 @@
 	var b="Ref Error";
 	var c="Ref Error";
 	var d="Ref Error";
+	var e;
+
+	//globals
 	w='Wings';
 	console.log('------main---------');
 	console.log('a: ' + a);
 	console.log('b: ' + b);  //Ref Error
 	console.log('c: ' + c);  //Ref Error
 	console.log('d: ' + d);  //Ref Error
-	console.log('e: ' + e);  //undefined
+	console.log('declared in main, not defined e: ' + e);  //undefined
 
 	console.log('w: ' + w);
 	//console.log('x: ' + x); //Ref Error
 	//console.log('y: ' + y); //Ref Error
 	//console.log('z: ' + z);
-	one();
+	one(); //calls two()
+	three();
 
 	function one(){
+		//local scope with var declaration
 		var b="Banana";
 		var c='Ref Error';
+
+		//global without the var
 		x='X-Ray';
+		y="fx one() undefined";
+		z="fx one() undefined";
+
 		console.log('------fx one---------');
 		console.log('a: ' + a);
 		console.log('b: ' + b);
 		console.log('c: ' + c);
 		console.log('d: ' + d);
+		console.log('declared in main, not defined e: ' + e);  //undefined
 
 		console.log('w: ' + w);
 		console.log('x: ' + x);
 		console.log('y: ' + y);
 		console.log('z: ' + z);
 
+		two();
+
 
 		function two(){
 			var c="Candy";
+
+			//global
 			y='Yellow';
+
 			console.log('------fx two---------');
 			console.log('a: ' + a);
 			console.log('b: ' + b);
 			console.log('c: ' + c);
 			console.log('d: ' + d);
+			console.log('declared in main, not defined e: ' + e);  //undefined
 
 			console.log('w: ' + w);
 			console.log('x: ' + x);
@@ -56,11 +73,12 @@
 	function three(){
 		var d="Dandelion";
 		z = 'Pink';
-		console.log('------fx two---------');
+		console.log('------fx three ---------');
 		console.log('a: ' + a);
 		console.log('b: ' + b);
 		console.log('c: ' + c);
 		console.log('d: ' + d);
+		console.log('declared in main, not defined e: ' + e);  //undefined
 
 		console.log('w: ' + w);
 		console.log('x: ' + x);
@@ -68,6 +86,18 @@
 		console.log('z: ' + z);
 
 	}
+
+	console.log('------main at the end ---------');
+	console.log('a: ' + a);
+	console.log('b: ' + b);
+	console.log('c: ' + c);
+	console.log('d: ' + d);
+	console.log('declared in main, not defined e: ' + e);  //undefined
+
+	console.log('w: ' + w);
+	console.log('x: ' + x);
+	console.log('y: ' + y);
+	console.log('z: ' + z);
 
 
 
