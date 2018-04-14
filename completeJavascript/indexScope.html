@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Hello JavaScript</title>
+<script>
+	console.log(this);
+	var a="Apple";
+	var b="Ref Error";
+	var c="Ref Error";
+	var d="Ref Error";
+	w='Wings';
+	console.log('------main---------');
+	console.log('a: ' + a);
+	console.log('b: ' + b);  //Ref Error
+	console.log('c: ' + c);  //Ref Error
+	console.log('d: ' + d);  //Ref Error
+	console.log('e: ' + e);  //undefined
+
+	console.log('w: ' + w);
+	//console.log('x: ' + x); //Ref Error
+	//console.log('y: ' + y); //Ref Error
+	//console.log('z: ' + z);
+	one();
+
+	function one(){
+		var b="Banana";
+		var c='Ref Error';
+		x='X-Ray';
+		console.log('------fx one---------');
+		console.log('a: ' + a);
+		console.log('b: ' + b);
+		console.log('c: ' + c);
+		console.log('d: ' + d);
+
+		console.log('w: ' + w);
+		console.log('x: ' + x);
+		console.log('y: ' + y);
+		console.log('z: ' + z);
+
+
+		function two(){
+			var c="Candy";
+			y='Yellow';
+			console.log('------fx two---------');
+			console.log('a: ' + a);
+			console.log('b: ' + b);
+			console.log('c: ' + c);
+			console.log('d: ' + d);
+
+			console.log('w: ' + w);
+			console.log('x: ' + x);
+			console.log('y: ' + y);
+			console.log('z: ' + z);
+		}
+
+	}
+	function three(){
+		var d="Dandelion";
+		z = 'Pink';
+		console.log('------fx two---------');
+		console.log('a: ' + a);
+		console.log('b: ' + b);
+		console.log('c: ' + c);
+		console.log('d: ' + d);
+
+		console.log('w: ' + w);
+		console.log('x: ' + x);
+		console.log('y: ' + y);
+		console.log('z: ' + z);
+
+	}
+
+
+
+
+</script>
+</head>
+<body>
+<h1>Hello World</h1>
+</body>
+</html>
