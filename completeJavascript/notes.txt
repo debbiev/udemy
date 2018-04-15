@@ -1,0 +1,76 @@
+//---------------------------
+Section 3, Lecture 30: Hoisting
+//---------------------------
+	He goes over some code.
+	He comments out Lecture 29 code.  
+	I tried just doing an "exit()" instead.  No can do.
+
+	https://stackoverflow.com/questions/9298839/is-it-possible-to-stop-javascript-execution
+
+	This says that if you're in a function, you can do a 
+
+		return;
+
+	But, if you're still in the global context, the only thing you can do
+	is throw an error:
+
+		throw new Error("Something went badly wrong")
+
+		throw an error that's only going to get caught in your application's root scope, nowhere else
+
+		//create a new exception type
+		function EasyExitError(){ Error.apply(this, arguments); this.name = "EasyExitError"; }
+		FatalError.prototype = Object.create(Error.prototype);
+
+		// and then, use this to trigger the error
+		throw new EasyExitError("Not really and error, I just wanted to exit");
+
+		//be sure you don't have catch() blocks that catch ANY exception...
+
+		//also, if you exit, you're going to want to stop async code as well
+		clearTimeout  
+		clearInterval
+		XHR(Ajax)  use xhrObj.abort()
+			
+
+
+//---------------------------
+Section 3, Lecture 29:  Execution Context Object
+//---------------------------
+
+Execution Context Ojbect
+	Variable Object (VO)
+	Scope Chain
+	"This" variable
+
+
+1. Creation phase
+	 a) Creation of the Variable Object (VO)
+	 b) Creation of the Scope Chain (next lecture)
+	 c) Determine value of the 'this' variable
+2. Execution phase
+	 The code of the funciton that generated the current execution context
+	 is run line by line
+
+
+1.a)  Creation of the Variable Object 
+			- The ARGUMENT is created, 
+				containing all the arguments that were passed into the fx
+			- Code is scanned for FUNCTION DECLARATIONS
+				for each function, a property is created in the Variable Object,
+				pointing to the function
+			- Code is scanned for VARIABLE DECLARATIONS
+				for each variable, a property is created in the Variable Object,
+				and set to undefined
+
+
+				This is what's called HOISTING, the fx & variable declarations are 
+				available BEFORE the EXECUTION phase, actually starts
+
+				They're hoisted in a different way though.
+
+				Variables are undefined, and won't be defined until the execution
+				phase.
+
+				Functions are completely defined at this stage.
+
