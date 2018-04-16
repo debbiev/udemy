@@ -34,6 +34,29 @@ p1Score.textContent = '0';
 p0Current.textContent = '0';
 p1Current.textContent = '0';
 
+/* ---------------  Hold  ---------------------------- */
+document.querySelector('.btn-hold').addEventListener('click', function(){
+	document.querySelector('.dice').style.display = 'none';
+	//add the roundScore to the player's overall score
+	scores[activePlayer] += roundScore;
+	roundScore=0;
+
+	//upate the displaying of the scores
+	if (activePlayer === 0){
+		p0Score.textContent = scores[activePlayer];
+		p0Current.textContent = '0';
+	} else {
+		p1Score.textContent = scores[activePlayer];
+		p1Current.textContent = '0';
+	}
+	//switch players
+	//activePlayer = !activePlayer;
+	//console.log('Hold.pre.activePlayer=' + activePlayer);
+	activePlayer = Math.floor(!activePlayer);
+	//console.log('Hold.post.activePlayer=' + activePlayer);
+});
+
+/* ---------------  Roll the Die ---------------------------- */
 document.querySelector('.btn-roll').addEventListener('click', function(){
 	// 1.  generate random number
 	var dice =  Math.floor(Math.random() * 6) + 1;
@@ -49,35 +72,18 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
 	if(dice !== 1 ){
 		
-		//console.log('pre roundScore=' + roundScore);
-		//console.log('dice=' + dice);
 		roundScore += dice;
-		//console.log('post roundScore=' + roundScore);
-		/*
-		var xClass = document.querySelector("#score-" + activePlayer).textContent;
-		console.log('xClass=' + xClass);
-		*/
-		//document.querySelector('#current-' + activePlayer).textContent=roundScore;
 		//DomScores[activePlayer].textContent += roundScore;
-		if (activePlayer == 0){
+		if (activePlayer === 0){
 			p0Current.textContent=roundScore;
 		} else {
 			p1Current.textContent=roundScore;
 		}
 
 	} else {
-		//next player
-
-		/*
-		//update the player's score
-		scores[activePlayer] += roundScore;
-		roundScore = 0;
-		document.getElementById('current-' + activePlayer)
-			.textContent=scores[activePlayer];
-		*/
-
 		//change the active player
-		activePlayer = !activePlayer;
+		//activePlayer = !activePlayer;
+		activePlayer = Math.floor(!activePlayer);
 
 		//reset the roundScore
 		roundScore = 0;
@@ -86,9 +92,6 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 		p0Current.textContent = '0';
 		p1Current.textContent = '0';
 	}
-});
-
-document.querySelector('.btn-roll').addEventListener('click', function(){
 });
 
 
