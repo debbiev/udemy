@@ -1,6 +1,21 @@
 //---------------------------
 Section 4, The DOM
 //---------------------------
+document.querySelector('#class')   - select an element just like css selector, 
+	but it just gets the FIRST one
+
+	.textContent = string content
+	.innerHtml =  html content
+	.style.display = 'none';
+	.src = 'dice-3.png';
+	.addEventListener('click'){};
+
+
+	Events are put in the Message Queue, once the Execution Stack is empty
+
+
+
+
 //---------------------------
 Section 3, Lecture 30: Hoisting
 //---------------------------
