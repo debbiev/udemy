@@ -1,7 +1,8 @@
 //---------------------------
 Section 4, The DOM
 //---------------------------
-document.querySelector('#class')   - select an element just like css selector, 
+document.querySelector('#id')   - select an element just like css selector, 
+document.querySelector('.class')   - select an element just like css selector, 
 	but it just gets the FIRST one
 
 	.textContent = string content
