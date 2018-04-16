@@ -34,12 +34,29 @@ p1Score.textContent = '0';
 p0Current.textContent = '0';
 p1Current.textContent = '0';
 
+/* ---------------  SwitchPlayers  ---------------------------- */
+function SwitchPlayers(){
+	//switch players
+	activePlayerID='player-' + activePlayer + '-panel';
+	document.getElementById(activePlayerID).classList.toggle('active');
+	activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+	activePlayerID='player-' + activePlayer + '-panel';
+	document.getElementById(activePlayerID).classList.add('active');
+}
 /* ---------------  Hold  ---------------------------- */
 document.querySelector('.btn-hold').addEventListener('click', function(){
 	document.querySelector('.dice').style.display = 'none';
 	//add the roundScore to the player's overall score
 	scores[activePlayer] += roundScore;
 	roundScore=0;
+
+	/* End of Game Determination  */
+	if(scores[activePlayer]  >= 100){
+		//We have a WINNER
+		document.getElementById('name-' + activePlayer).textContent = 'WINNER';
+		document.querySelector('.btn-hold').active = false;
+		document.querySelector('.btn-roll').active = false;
+	} 
 
 	//upate the displaying of the scores
 	if (activePlayer === 0){
@@ -52,8 +69,9 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 	//switch players
 	//activePlayer = !activePlayer;
 	//console.log('Hold.pre.activePlayer=' + activePlayer);
-	activePlayer = Math.floor(!activePlayer);
+	//activePlayer = Math.floor(!activePlayer);
 	//console.log('Hold.post.activePlayer=' + activePlayer);
+	SwitchPlayers();
 });
 
 /* ---------------  Roll the Die ---------------------------- */
@@ -81,13 +99,9 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 		}
 
 	} else {
-		//change the active player
-		//activePlayer = !activePlayer;
-		activePlayer = Math.floor(!activePlayer);
+		SwitchPlayers();
 
-		//reset the roundScore
 		roundScore = 0;
-		
 		//set both current scores back to  zero
 		p0Current.textContent = '0';
 		p1Current.textContent = '0';

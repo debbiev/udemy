@@ -10,6 +10,8 @@ document.querySelector('.class')   - select an element just like css selector,
 	.style.display = 'none';
 	.src = 'dice-3.png';
 	.addEventListener('click'){};
+	.classList.add('style');
+	.classList.remove('style');
 
 
 	Events are put in the Message Queue, once the Execution Stack is empty
