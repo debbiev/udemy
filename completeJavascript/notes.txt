@@ -11,12 +11,16 @@ Section 5, Objects, Prototypes, Inheritance, etc
 	console.info(x), you can see the prototype property of Array
 		so you can see all the stuff avail for Arrays.:w
 
+--------------
 Lecture:  Creating Objects
+--------------
 obj.create(), alternative to function constructors (above)o
 
 obj.create() is a powerful way to create complicated stuffo
 
+--------------
 PRIMITIVES VS OBJECTS  (Containers and Pointers)
+--------------
 
 Primitives:  Numbers, Strings, Bools, undef, null
 Objs:  everything else
@@ -24,7 +28,9 @@ Objs:  everything else
 Var containing primitives actually hold the data
 Vars assoc with Objs are pointers, not container
 
+--------------
 PASSING FUNCTIONS AS ARGS
+--------------
 
 duh, they're objects, so this makes complete sense.
 
@@ -37,6 +43,24 @@ In JS, we have FIRST CLASS FUNCTIONS
 EventListeners are an example of this.
 
 
+--------------
+FUNCTIONS RETURNING FUNCTIONS  (FIRST CLASS FUNCTIONS)
+--------------
+interviewQuestion('teacher')('Anita')
+
+--------------
+IIFE - Immediately Invoked Fx Expressions === DATA PRIVACY
+--------------
+
+very common pattern
+It's how you do PRIVATE PROPERTIES/VARS in JS
+Not used to reuse code, only to obtain data privacy, and to avoid stomping on scoped vars that we maybe don't know about
+
+used for Code modularity
+
+--------------
+CLOSURES
+--------------
 
 //---------------------------
 Section 4, The DOM

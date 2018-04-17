@@ -79,6 +79,7 @@ function change( a, b){
 change (age, objJonas);
 */
 
+/*
 
 var years = [1990, 1965, 1937, 1945, 1999, 2005, 1904];
 
@@ -112,3 +113,42 @@ function arrayCalc( arr, fn){
 var ages = arrayCalc( years, calcAge );
 var fullAges = arrayCalc( ages, isFullAge );
 var maxHRate = arrayCalc( ages, maxHeartRate );
+*/
+
+function interviewQuestion(job){
+	if (job === 'designer'){
+		//anonymous fx
+		return function(name){
+			console.log(name + ', can you explain what UX design is?');
+		}
+	} else if (job ==='teacher'){
+		return function(name){
+			console.log(name + ', what subject do you teach?');
+		}
+	} else {
+		return function(name){
+			console.log('Hello ' + name + ' what do you do?');
+		}
+	}
+
+}
+
+//question = interviewQuestion();
+var teacherQuestion =
+	interviewQuestion('teacher');
+teacherQuestion('Jonas');
+
+var designerQuestion =
+	interviewQuestion('designer');
+designerQuestion('Jonas');
+
+var otherQuestion =
+	interviewQuestion('other');
+otherQuestion('Jonas');
+otherQuestion('Jane');
+otherQuestion('Mark');
+otherQuestion('Mike');
+
+interviewQuestion('teacher')('Anita');
+
+
