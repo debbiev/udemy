@@ -27,7 +27,7 @@ p0Score = document.getElementById("score-0");
 p1Score = document.getElementById("score-1");
 p0Current = document.getElementById("current-0");
 p1Current = document.getElementById("current-1");
-var DomScores = [ p0Score, p1Score ];
+//var DomScores = [ p0Score, p1Score ];
 
 p0Score.textContent = '0';
 p1Score.textContent = '0';
@@ -43,20 +43,32 @@ function SwitchPlayers(){
 	activePlayerID='player-' + activePlayer + '-panel';
 	document.getElementById(activePlayerID).classList.add('active');
 }
+/* ---------------  New Game  ---------------------------- */
+document.querySelector('.btn-new').addEventListener('click', function(){
+	document.getElementById('name-0').textContent = 'Player 1';
+	document.getElementById('name-1').textContent = 'Player 2';
+	document.querySelector('.btn-hold').disabled = false;
+	document.querySelector('.btn-roll').disabled = false;
+	document.querySelector('.btn-hold').style.display = 'block';
+	document.querySelector('.btn-roll').style.display = 'block';
+	p0Score.textContent = '0';
+	p1Score.textContent = '0';
+	p0Current.textContent = '0';
+	p1Current.textContent = '0';
+
+	//reset all the scores
+	scores = [0,0];
+	roundScore = 0;
+	//active player = last game's loser
+	SwitchPlayers();
+
+});
 /* ---------------  Hold  ---------------------------- */
 document.querySelector('.btn-hold').addEventListener('click', function(){
 	document.querySelector('.dice').style.display = 'none';
 	//add the roundScore to the player's overall score
 	scores[activePlayer] += roundScore;
 	roundScore=0;
-
-	/* End of Game Determination  */
-	if(scores[activePlayer]  >= 100){
-		//We have a WINNER
-		document.getElementById('name-' + activePlayer).textContent = 'WINNER';
-		document.querySelector('.btn-hold').active = false;
-		document.querySelector('.btn-roll').active = false;
-	} 
 
 	//upate the displaying of the scores
 	if (activePlayer === 0){
@@ -66,12 +78,18 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 		p1Score.textContent = scores[activePlayer];
 		p1Current.textContent = '0';
 	}
-	//switch players
-	//activePlayer = !activePlayer;
-	//console.log('Hold.pre.activePlayer=' + activePlayer);
-	//activePlayer = Math.floor(!activePlayer);
-	//console.log('Hold.post.activePlayer=' + activePlayer);
-	SwitchPlayers();
+	/* End of Game Determination  */
+	if(scores[activePlayer]  >= 10){
+		//We have a WINNER
+		document.getElementById('name-' + activePlayer).textContent = 'WINNER';
+		document.querySelector('.btn-hold').disabled = true;
+		document.querySelector('.btn-hold').style.display = 'none';
+		document.querySelector('.btn-roll').disabled = true;
+		document.querySelector('.btn-roll').style.display = 'none';
+	}  else {
+		SwitchPlayers();
+	}
+
 });
 
 /* ---------------  Roll the Die ---------------------------- */
